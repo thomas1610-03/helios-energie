@@ -8,7 +8,6 @@
         :root {
             --primary-green: #2e7d32;
             --light-green: #e8f5e9;
-            --accent-red: #d32f2f;
             --dark-gray: #333;
             --light-bg: #f9f9f9;
         }
@@ -21,7 +20,6 @@
             background-color: var(--light-bg);
         }
 
-        /* En-tête formulaire */
         .top-banner {
             background-color: var(--primary-green);
             color: white;
@@ -62,7 +60,6 @@
             font-weight: bold;
         }
 
-        /* Section Réalisation */
         .realisation-section {
             max-width: 900px;
             margin: 30px auto;
@@ -101,7 +98,6 @@
             padding: 5px;
         }
 
-        /* Nos Solutions (3 solutions sans isolation) */
         .solutions-section {
             max-width: 900px;
             margin: 30px auto;
@@ -123,14 +119,15 @@
             padding: 15px;
             border-radius: 5px;
             background: #fff;
+            text-align: left;
         }
 
         .solution-item h3 {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--primary-green);
+            margin-top: 0;
         }
 
-        /* Formulaire de questions */
         .form-section {
             max-width: 700px;
             margin: 30px auto 50px auto;
@@ -162,6 +159,7 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             font-size: 1rem;
+            box-sizing: border-box;
         }
 
         .btn-submit {
@@ -181,7 +179,6 @@
             background-color: #1b5e20;
         }
 
-        /* Footer */
         footer {
             text-align: center;
             padding: 20px;
@@ -193,12 +190,10 @@
 </head>
 <body>
 
-    <!-- Bannière supérieure -->
     <div class="top-banner">
         ▲ REMPLISSEZ LE FORMULAIRE POUR ÊTRE APPELÉ RAPIDEMENT !
     </div>
 
-    <!-- En-tête -->
     <header>
         <div class="logo-section">
             <h1>FRANCE ENVIRONNEMENT</h1>
@@ -210,14 +205,13 @@
         </div>
     </header>
 
-    <!-- Section Réalisation client -->
     <section class="realisation-section">
         <h2>Une réalisation chez l'un de nos clients</h2>
-        <p>Remplacement d'une ancienne chaudière fioul par une pompe à chaleur.</p>
+        <p>Remplacement d'une ancienne chaudière par une pompe à chaleur.</p>
         <div class="comparison-images">
             <div class="image-card">
                 <h4>Ancienne installation</h4>
-                <p>Chaudière fioul</p>
+                <p>Chaudière (fioul / gaz / bois)</p>
             </div>
             <div class="image-card" style="background: #e8f5e9;">
                 <h4 style="background: var(--primary-green);">Nouvelle installation</h4>
@@ -226,32 +220,40 @@
         </div>
     </section>
 
-    <!-- Nos Solutions (3 solutions sans isolation) -->
     <section class="solutions-section">
         <h2>NOS SOLUTIONS POUR VOTRE MAISON</h2>
         <div class="solutions-grid">
             <div class="solution-item">
                 <h3>POMPE À CHALEUR AIR/EAU</h3>
-                <p>Chauffage performant et économique</p>
+                <p style="font-size: 0.85rem; color: #666;">Chauffage performant et économique</p>
             </div>
             <div class="solution-item">
                 <h3>SYSTÈME SOLAIRE COMBINÉ (SSC)</h3>
-                <p>Chauffage + Eau chaude grâce au soleil</p>
+                <p style="font-size: 0.85rem; color: #666;">Chauffage + Eau chaude grâce au soleil</p>
             </div>
             <div class="solution-item">
                 <h3>BALLON THERMODYNAMIQUE</h3>
-                <p>Eau chaude sanitaire économique</p>
+                <p style="font-size: 0.85rem; color: #666;">Eau chaude sanitaire économique</p>
             </div>
         </div>
     </section>
 
-    <!-- Formulaire avec vos questions exactes -->
     <section class="form-section">
         <h2>Votre Étude Gratuite & Personnalisée</h2>
         <form action="#" method="POST">
             
             <div class="form-group">
-                <label>Êtes-vous propriétaire ou locataire ?</label>
+                <label>Quels travaux souhaitez-vous réaliser ?</label>
+                <select name="travaux_souhaites" required>
+                    <option value="">-- Sélectionnez votre projet --</option>
+                    <option value="pac_air_eau">Pompe à chaleur Air/Eau (Chauffage performant et économique)</option>
+                    <option value="ssc">Système Solaire Combiné / SSC (Chauffage + Eau chaude grâce au soleil)</option>
+                    <option value="ballon_thermodynamique">Ballon Thermodynamique (Eau chaude sanitaire économique)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Êtes-vous propriétaire or locataire ?</label>
                 <select name="proprietaire_locataire" required>
                     <option value="">--Choisissez--</option>
                     <option value="proprietaire">Propriétaire</option>
@@ -293,13 +295,13 @@
             </div>
 
             <div class="form-group">
-                <label>Chauffage existant : chaudière ou PAC ?</label>
+                <label>Chauffage existant :</label>
                 <select name="chauffage_existant" required>
                     <option value="">--Choisissez--</option>
-                    <option value="chaudiere_fioul">Chaudière fioul</option>
-                    <option value="chaudiere_gaz">Chaudière gaz</option>
-                    <option value="chaudiere_bois">Chaudière bois</option>
-                    <option value="pac">Pompe à chaleur (PAC)</option>
+                    <option value="fioul">Fioul</option>
+                    <option value="gaz">Gaz</option>
+                    <option value="bois">Bois</option>
+                    <option value="pac">PAC (Pompe à chaleur)</option>
                     <option value="autre">Autre</option>
                 </select>
             </div>
@@ -320,11 +322,30 @@
                 <input type="number" name="surface_toiture" placeholder="Ex: 40" required>
             </div>
 
+            <div class="form-group">
+                <label>Code postal :</label>
+                <input type="text" name="code_postal" placeholder="Ex: 75001" required>
+            </div>
+
+            <div class="form-group">
+                <label>Zone climatique :</label>
+                <select name="zone_climatique" required>
+                    <option value="">--Choisissez votre zone--</option>
+                    <option value="H1">Zone H1</option>
+                    <option value="H2">Zone H2</option>
+                    <option value="H3">Zone H3</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Numéro de téléphone :</label>
+                <input type="tel" name="telephone" placeholder="Ex: 06 12 34 56 78" required>
+            </div>
+
             <button type="submit" class="btn-submit">VALIDER MA DEMANDE DE DEVIS</button>
         </form>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p>FRANCE ENVIRONNEMENT - ÉTUDE GRATUITE ET PERSONNALISÉE • DEVIS SANS ENGAGEMENT</p>
     </footer>
