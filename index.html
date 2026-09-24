@@ -3,203 +3,331 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hélios Énergie - Simulateur d'Aides 2026</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col justify-between">
+    <title>France Environnement - Étude Gratuite</title>
+    <style>
+        :root {
+            --primary-green: #2e7d32;
+            --light-green: #e8f5e9;
+            --accent-red: #d32f2f;
+            --dark-gray: #333;
+            --light-bg: #f9f9f9;
+        }
 
-    <!-- Header -->
-    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <div class="bg-emerald-600 text-white p-2 rounded-xl font-bold">☀️</div>
-                <span class="text-xl font-bold text-slate-900">Hélios Énergie</span>
-            </div>
-            <span class="text-sm bg-emerald-50 text-emerald-700 font-medium px-3 py-1 rounded-full border border-emerald-200">
-                Simulateur Gratuit & Sans Engagement
-            </span>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--dark-gray);
+            background-color: var(--light-bg);
+        }
+
+        /* En-tête formulaire */
+        .top-banner {
+            background-color: var(--primary-green);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        header {
+            background: white;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .logo-section h1 {
+            color: var(--primary-green);
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .badges-etat {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .badge {
+            background: var(--light-green);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        /* Section Réalisation */
+        .realisation-section {
+            max-width: 900px;
+            margin: 30px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .realisation-section h2 {
+            font-style: italic;
+            color: #222;
+        }
+
+        .comparison-images {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .image-card {
+            flex: 1;
+            min-width: 280px;
+            background: #eee;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .image-card h4 {
+            margin: 5px 0 10px 0;
+            background: #444;
+            color: white;
+            padding: 5px;
+        }
+
+        /* Nos Solutions (3 solutions sans isolation) */
+        .solutions-section {
+            max-width: 900px;
+            margin: 30px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .solution-item {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            background: #fff;
+        }
+
+        .solution-item h3 {
+            font-size: 1rem;
+            color: var(--primary-green);
+        }
+
+        /* Formulaire de questions */
+        .form-section {
+            max-width: 700px;
+            margin: 30px auto 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .form-section h2 {
+            text-align: center;
+            color: var(--primary-green);
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-group select, .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .btn-submit {
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #1b5e20;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: white;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Bannière supérieure -->
+    <div class="top-banner">
+        ▲ REMPLISSEZ LE FORMULAIRE POUR ÊTRE APPELÉ RAPIDEMENT !
+    </div>
+
+    <!-- En-tête -->
+    <header>
+        <div class="logo-section">
+            <h1>FRANCE ENVIRONNEMENT</h1>
+            <p style="margin: 0; font-size: 0.8rem; color: #666;">Votre confort, notre engagement</p>
+        </div>
+        <div class="badges-etat">
+            <div class="badge">MaPrimeRénov'</div>
+            <div class="badge">CEE</div>
         </div>
     </header>
 
-    <!-- Contenu Principal -->
-    <main class="max-w-3xl mx-auto px-4 py-10 w-full flex-grow">
-        <div class="text-center mb-8">
-            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-3">
-                Simulez vos aides pour vos <span class="text-emerald-600">travaux de rénovation</span>
-            </h1>
-            <p class="text-slate-600">
-                MaPrimeRénov', CEE, Coup de pouce... Découvrez en moins de 2 minutes le montant de vos subventions.
-            </p>
+    <!-- Section Réalisation client -->
+    <section class="realisation-section">
+        <h2>Une réalisation chez l'un de nos clients</h2>
+        <p>Remplacement d'une ancienne chaudière fioul par une pompe à chaleur.</p>
+        <div class="comparison-images">
+            <div class="image-card">
+                <h4>Ancienne installation</h4>
+                <p>Chaudière fioul</p>
+            </div>
+            <div class="image-card" style="background: #e8f5e9;">
+                <h4 style="background: var(--primary-green);">Nouvelle installation</h4>
+                <p>Pompe à chaleur Air/Eau</p>
+            </div>
         </div>
+    </section>
 
-        <div class="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 md:p-10">
+    <!-- Nos Solutions (3 solutions sans isolation) -->
+    <section class="solutions-section">
+        <h2>NOS SOLUTIONS POUR VOTRE MAISON</h2>
+        <div class="solutions-grid">
+            <div class="solution-item">
+                <h3>POMPE À CHALEUR AIR/EAU</h3>
+                <p>Chauffage performant et économique</p>
+            </div>
+            <div class="solution-item">
+                <h3>SYSTÈME SOLAIRE COMBINÉ (SSC)</h3>
+                <p>Chauffage + Eau chaude grâce au soleil</p>
+            </div>
+            <div class="solution-item">
+                <h3>BALLON THERMODYNAMIQUE</h3>
+                <p>Eau chaude sanitaire économique</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulaire avec vos questions exactes -->
+    <section class="form-section">
+        <h2>Votre Étude Gratuite & Personnalisée</h2>
+        <form action="#" method="POST">
             
-            <!-- Barre de progression -->
-            <div class="mb-8" id="progress-container">
-                <div class="flex justify-between text-xs font-semibold text-slate-500 mb-2">
-                    <span id="step-label">Étape 1 sur 4</span>
-                    <span id="step-percent">25%</span>
-                </div>
-                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                    <div id="progress-bar" class="bg-emerald-600 h-full transition-all duration-300" style="width: 25%"></div>
-                </div>
+            <div class="form-group">
+                <label>Êtes-vous propriétaire ou locataire ?</label>
+                <select name="proprietaire_locataire" required>
+                    <option value="">--Choisissez--</option>
+                    <option value="proprietaire">Propriétaire</option>
+                    <option value="locataire">Locataire</option>
+                </select>
             </div>
 
-            <!-- ÉTAPE 1 : Type de travaux -->
-            <div class="step-content" id="step-1">
-                <h2 class="text-xl font-bold text-slate-900 mb-4">Quels travaux souhaitez-vous réaliser en priorité ?</h2>
-                <div class="space-y-3 mb-8">
-                    <label class="flex items-center p-4 border-2 border-slate-200 rounded-xl cursor-pointer hover:border-emerald-600 transition-all">
-                        <input type="radio" name="travaux" value="Isolation" checked class="text-emerald-600 focus:ring-emerald-500 h-4 w-4">
-                        <span class="ml-3 font-medium text-slate-700">Isolation (Combles, murs, toiture)</span>
-                    </label>
-                    <label class="flex items-center p-4 border-2 border-slate-200 rounded-xl cursor-pointer hover:border-emerald-600 transition-all">
-                        <input type="radio" name="travaux" value="Chauffage" class="text-emerald-600 focus:ring-emerald-500 h-4 w-4">
-                        <span class="ml-3 font-medium text-slate-700">Chauffage écologique (Pompe à chaleur, chaudière biomasse)</span>
-                    </label>
-                    <label class="flex items-center p-4 border-2 border-slate-200 rounded-xl cursor-pointer hover:border-emerald-600 transition-all">
-                        <input type="radio" name="travaux" value="Solaire" class="text-emerald-600 focus:ring-emerald-500 h-4 w-4">
-                        <span class="ml-3 font-medium text-slate-700">Panneaux solaires photovoltaïques</span>
-                    </label>
-                </div>
-                <button onclick="nextStep(2)" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-4 rounded-xl transition-all shadow-lg shadow-emerald-600/20">
-                    Continuer
-                </button>
+            <div class="form-group">
+                <label>Résidence principale ?</label>
+                <select name="residence_principale" required>
+                    <option value="">--Choisissez--</option>
+                    <option value="oui">Oui</option>
+                    <option value="non">Non</option>
+                </select>
             </div>
 
-            <!-- ÉTAPE 2 : Type de logement -->
-            <div class="step-content hidden" id="step-2">
-                <h2 class="text-xl font-bold text-slate-900 mb-4">Quel est le type de votre logement ?</h2>
-                <div class="space-y-3 mb-8">
-                    <label class="flex items-center p-4 border-2 border-slate-200 rounded-xl cursor-pointer hover:border-emerald-600 transition-all">
-                        <input type="radio" name="logement" value="Maison" checked class="text-emerald-600 focus:ring-emerald-500 h-4 w-4">
-                        <span class="ml-3 font-medium text-slate-700">Maison individuelle</span>
-                    </label>
-                    <label class="flex items-center p-4 border-2 border-slate-200 rounded-xl cursor-pointer hover:border-emerald-600 transition-all">
-                        <input type="radio" name="logement" value="Appartement" class="text-emerald-600 focus:ring-emerald-500 h-4 w-4">
-                        <span class="ml-3 font-medium text-slate-700">Appartement</span>
-                    </label>
-                </div>
-                <div class="flex space-x-4">
-                    <button onclick="prevStep(1)" class="w-1/3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-4 rounded-xl transition-all">
-                        Retour
-                    </button>
-                    <button onclick="nextStep(3)" class="w-2/3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-4 rounded-xl transition-all shadow-lg shadow-emerald-600/20">
-                        Continuer
-                    </button>
-                </div>
+            <div class="form-group">
+                <label>Combien de personnes vivent dans le foyer ?</label>
+                <input type="number" name="nb_personnes" min="1" placeholder="Ex: 3" required>
             </div>
 
-            <!-- ÉTAPE 3 : Revenus / Profil -->
-            <div class="step-content hidden" id="step-3">
-                <h2 class="text-xl font-bold text-slate-900 mb-4">Quels sont les revenus annuels de votre foyer ?</h2>
-                <div class="space-y-3 mb-8">
-                    <label class="flex items-center p-4 border-2 border-slate-200 rounded-xl cursor-pointer hover:border-emerald-600 transition-all">
-                        <input type="radio" name="revenus" value="Tres modestes" checked class="text-emerald-600 focus:ring-emerald-500 h-4 w-4">
-                        <span class="ml-3 font-medium text-slate-700">Revenus très modestes (MaPrimeRénov' Bleue)</span>
-                    </label>
-                    <label class="flex items-center p-4 border-2 border-slate-200 rounded-xl cursor-pointer hover:border-emerald-600 transition-all">
-                        <input type="radio" name="revenus" value="Modestes" class="text-emerald-600 focus:ring-emerald-500 h-4 w-4">
-                        <span class="ml-3 font-medium text-slate-700">Revenus modestes (MaPrimeRénov' Jaune)</span>
-                    </label>
-                    <label class="flex items-center p-4 border-2 border-slate-200 rounded-xl cursor-pointer hover:border-emerald-600 transition-all">
-                        <input type="radio" name="revenus" value="Intermediaires ou superieurs" class="text-emerald-600 focus:ring-emerald-500 h-4 w-4">
-                        <span class="ml-3 font-medium text-slate-700">Revenus intermédiaires ou supérieurs</span>
-                    </label>
-                </div>
-                <div class="flex space-x-4">
-                    <button onclick="prevStep(2)" class="w-1/3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-4 rounded-xl transition-all">
-                        Retour
-                    </button>
-                    <button onclick="nextStep(4)" class="w-2/3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-4 rounded-xl transition-all shadow-lg shadow-emerald-600/20">
-                        Voir mes estimations d'aides
-                    </button>
-                </div>
+            <div class="form-group">
+                <label>Âge de la maison (+ de 2 ans) ?</label>
+                <select name="age_maison" required>
+                    <option value="">--Choisissez--</option>
+                    <option value="oui">Oui (+ de 2 ans)</option>
+                    <option value="non">Non (moins de 2 ans)</option>
+                </select>
             </div>
 
-            <!-- ÉTAPE 4 : Coordonnées et Résultat (Formulaire Final) -->
-            <div class="step-content hidden" id="step-4">
-                <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-6 mb-6 text-center">
-                    <span class="text-emerald-700 font-bold text-sm uppercase tracking-wider">Simulation terminée !</span>
-                    <h2 class="text-2xl font-extrabold text-slate-900 mt-1 mb-2">Félicitations, vous êtes éligible !</h2>
-                    <p class="text-slate-600 text-sm">
-                        Vos travaux vous permettent de prétendre à des subventions majeures (MaPrimeRénov' + CEE). Recevez votre estimation détaillée par téléphone.
-                    </p>
-                </div>
-
-                <form onsubmit="validerSimulation(event)" class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-semibold text-slate-700 mb-1">Votre nom et prénom</label>
-                        <input type="text" id="nom" required placeholder="Jean Dupont" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-600 focus:outline-none">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-semibold text-slate-700 mb-1">Votre numéro de téléphone</label>
-                        <input type="tel" id="telephone" required placeholder="06 12 34 56 78" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-600 focus:outline-none">
-                    </div>
-                    <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-4 rounded-xl transition-all shadow-lg shadow-emerald-600/20 text-center text-lg mt-4">
-                        Découvrir mon montant exact d'aides
-                    </button>
-                </form>
+            <div class="form-group">
+                <label>Surface exacte de la maison (en m²) :</label>
+                <input type="number" name="surface_totale" placeholder="Ex: 120" required>
             </div>
 
-            <!-- ÉTAPE DE SUCCÈS -->
-            <div class="step-content hidden" id="step-success">
-                <div class="text-center py-6">
-                    <div class="bg-emerald-100 text-emerald-600 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl font-bold">✓</div>
-                    <h2 class="text-2xl font-bold text-slate-900 mb-2">Merci <span id="affichage-nom"></span> !</h2>
-                    <p class="text-slate-600 mb-8 max-w-md mx-auto">
-                        Votre dossier de simulation a bien été pris en compte. Un conseiller expert <strong>Hélios Énergie</strong> va vous contacter sous 24h pour vous transmettre votre bilan d'aides personnalisé.
-                    </p>
-                    <button onclick="location.reload()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold px-6 py-3 rounded-xl transition-all">
-                        Recommencer une simulation
-                    </button>
-                </div>
+            <div class="form-group">
+                <label>Surface chauffée exacte en m² :</label>
+                <input type="number" name="surface_chauffee" placeholder="Ex: 100" required>
             </div>
 
-        </div>
-    </main>
+            <div class="form-group">
+                <label>Chauffage existant : chaudière ou PAC ?</label>
+                <select name="chauffage_existant" required>
+                    <option value="">--Choisissez--</option>
+                    <option value="chaudiere_fioul">Chaudière fioul</option>
+                    <option value="chaudiere_gaz">Chaudière gaz</option>
+                    <option value="chaudiere_bois">Chaudière bois</option>
+                    <option value="pac">Pompe à chaleur (PAC)</option>
+                    <option value="autre">Autre</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Radiateurs : alu / acier ou fonte ?</label>
+                <select name="type_radiateurs" required>
+                    <option value="">--Choisissez--</option>
+                    <option value="alu_acier">Alu / Acier</option>
+                    <option value="fonte">Fonte</option>
+                    <option value="plancher_chauffant">Plancher chauffant</option>
+                    <option value="mixte">Mixte</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Surface toiture sur côté Sud / Est / Ouest (en m²) :</label>
+                <input type="number" name="surface_toiture" placeholder="Ex: 40" required>
+            </div>
+
+            <button type="submit" class="btn-submit">VALIDER MA DEMANDE DE DEVIS</button>
+        </form>
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-white border-t border-slate-200 py-6 text-center text-sm text-slate-500">
-        &copy; 2026 Hélios Énergie - Tous droits réservés.
+    <footer>
+        <p>FRANCE ENVIRONNEMENT - ÉTUDE GRATUITE ET PERSONNALISÉE • DEVIS SANS ENGAGEMENT</p>
     </footer>
 
-    <script>
-        function updateProgress(step) {
-            const percents = { 1: "25%", 2: "50%", 3: "75%", 4: "100%" };
-            const labels = { 1: "Étape 1 sur 4", 2: "Étape 2 sur 4", 3: "Étape 3 sur 4", 4: "Étape finale" };
-            
-            document.getElementById('progress-bar').style.width = percents[step];
-            document.getElementById('step-percent').innerText = percents[step];
-            document.getElementById('step-label').innerText = labels[step];
-            
-            if(step === 4) {
-                document.getElementById('progress-container').style.display = 'none';
-            }
-        }
-
-        function nextStep(step) {
-            document.querySelectorAll('.step-content').forEach(el => el.classList.add('hidden'));
-            document.getElementById('step-' + step).classList.remove('hidden');
-            updateProgress(step);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function prevStep(step) {
-            document.querySelectorAll('.step-content').forEach(el => el.classList.add('hidden'));
-            document.getElementById('step-' + step).classList.remove('hidden');
-            updateProgress(step);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function validerSimulation(e) {
-            e.preventDefault();
-            const nom = document.getElementById('nom').value;
-            document.getElementById('affichage-nom').innerText = nom;
-            document.querySelectorAll('.step-content').forEach(el => el.classList.add('hidden'));
-            document.getElementById('step-success').classList.remove('hidden');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    </script>
 </body>
 </html>
