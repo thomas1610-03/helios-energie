@@ -107,7 +107,11 @@
                 <p class="text-slate-600 text-sm">Complétez les informations ci-dessous pour lancer votre simulation d'aides.</p>
             </div>
 
-            <form action="#" method="POST" class="space-y-6">
+            <form id="devisForm" action="https://formspree.io/f/xqpalnbw" method="POST" class="space-y-6">
+                <!-- Sujet de l'e-mail reçu -->
+                <input type="hidden" name="_subject" value="Nouvelle demande de devis - Helios Energie">
+                <!-- Piège anti-spam (bots) : ce champ doit rester invisible et vide -->
+                <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
                 
                 <div class="bg-emerald-50/50 p-4 rounded-2xl border border-emerald-100">
                     <label class="block text-sm font-bold text-slate-900 mb-2">Quels travaux souhaitez-vous réaliser ? *</label>
@@ -219,12 +223,52 @@
                     <input type="tel" name="telephone" placeholder="Ex: 06 12 34 56 78" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-600 focus:outline-none text-lg">
                 </div>
 
-                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-4 px-8 rounded-2xl transition-all shadow-xl shadow-emerald-600/30 text-center text-lg mt-6 tracking-wide">
+                <button type="submit" id="devisSubmitBtn" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-4 px-8 rounded-2xl transition-all shadow-xl shadow-emerald-600/30 text-center text-lg mt-6 tracking-wide disabled:opacity-60 disabled:cursor-not-allowed">
                     VALIDER MA DEMANDE DE DEVIS
                 </button>
+
+                <!-- Zone de message affichée après l'envoi -->
+                <div id="devisFormMessage" class="hidden text-center text-sm font-semibold rounded-xl p-4 mt-2"></div>
             </form>
         </div>
     </main>
+
+    <script>
+        const devisForm = document.getElementById('devisForm');
+        const devisSubmitBtn = document.getElementById('devisSubmitBtn');
+        const devisFormMessage = document.getElementById('devisFormMessage');
+
+        devisForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            devisSubmitBtn.disabled = true;
+            devisSubmitBtn.textContent = 'ENVOI EN COURS...';
+            devisFormMessage.classList.add('hidden');
+
+            try {
+                const response = await fetch(devisForm.action, {
+                    method: 'POST',
+                    body: new FormData(devisForm),
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    devisFormMessage.textContent = "Merci ! Votre demande a bien été envoyée. Nous vous recontactons très vite.";
+                    devisFormMessage.className = "text-center text-sm font-semibold rounded-xl p-4 mt-2 bg-emerald-50 text-emerald-800 border border-emerald-200";
+                    devisForm.reset();
+                } else {
+                    throw new Error('Erreur d\'envoi');
+                }
+            } catch (err) {
+                devisFormMessage.textContent = "Une erreur est survenue. Merci de réessayer ou de nous appeler directement.";
+                devisFormMessage.className = "text-center text-sm font-semibold rounded-xl p-4 mt-2 bg-red-50 text-red-800 border border-red-200";
+            } finally {
+                devisFormMessage.classList.remove('hidden');
+                devisSubmitBtn.disabled = false;
+                devisSubmitBtn.textContent = 'VALIDER MA DEMANDE DE DEVIS';
+            }
+        });
+    </script>
 
     <!-- Footer -->
     <footer class="bg-slate-900 text-white py-8 text-center text-xs sm:text-sm mt-16 border-t border-slate-800">
