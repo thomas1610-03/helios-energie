@@ -41,7 +41,10 @@
   <aside class="topbar" aria-label="Coordonnées">
     <div class="container">
       <p class="topbar__info">Rénovation énergétique pour les particuliers · France métropolitaine</p>
-      <a href="mailto:helios-energie@monprojetchauffage.com"><svg aria-hidden="true"><use href="#i-mail"/></svg>helios-energie@monprojetchauffage.com</a>
+      <div class="topbar__links">
+        <a class="topbar__phone" href="tel:+33756893391"><svg aria-hidden="true"><use href="#i-phone"/></svg>07&nbsp;56&nbsp;89&nbsp;33&nbsp;91</a>
+        <a class="topbar__mail" href="mailto:helios-energie@monprojetchauffage.com"><svg aria-hidden="true"><use href="#i-mail"/></svg>helios-energie@monprojetchauffage.com</a>
+      </div>
     </div>
   </aside>
 
@@ -82,6 +85,7 @@
           <li><a href="#faq">Questions fréquentes</a></li>
         </ul>
         <a class="btn btn-primary btn-block" href="#demande"><svg aria-hidden="true"><use href="#i-phone"/></svg>Demander un rappel</a>
+        <a class="btn btn-secondary btn-block mobile-menu__call" href="tel:+33756893391"><svg aria-hidden="true"><use href="#i-phone"/></svg>Appeler le 07&nbsp;56&nbsp;89&nbsp;33&nbsp;91</a>
       </div>
     </nav>
   </header>
@@ -152,7 +156,7 @@
         <ul class="offer-grid">
           <li>
             <article class="offer-card">
-              <div class="offer-card__media"><img src="assets/pompe-a-chaleur-air-eau.jpg" alt="Unité extérieure d’une pompe à chaleur air-eau dans un jardin" width="800" height="581" loading="lazy"></div>
+              <div class="reveal offer-card__media"><img src="assets/pompe-a-chaleur-air-eau.jpg" alt="Unité extérieure d’une pompe à chaleur air-eau dans un jardin" width="800" height="581" loading="lazy"></div>
               <div class="offer-card__body">
                 <span class="tag">Chauffage</span>
                 <h3>Pompe à chaleur air-eau</h3>
@@ -166,7 +170,7 @@
           </li>
           <li>
             <article class="offer-card">
-              <div class="offer-card__media"><img src="assets/isolation-combles.webp" alt="Professionnel soufflant de l’isolant en vrac sur le plancher des combles" width="640" height="480" loading="lazy"></div>
+              <div class="reveal offer-card__media"><img src="assets/isolation-combles.webp" alt="Professionnel soufflant de l’isolant en vrac sur le plancher des combles" width="640" height="480" loading="lazy"></div>
               <div class="offer-card__body">
                 <span class="tag">Isolation</span>
                 <h3>Isolation des combles</h3>
@@ -180,7 +184,7 @@
           </li>
           <li>
             <article class="offer-card">
-              <div class="offer-card__media"><img src="assets/systeme-solaire-combine.jpg" alt="Capteurs solaires thermiques installés sur le toit d’une maison" width="800" height="436" loading="lazy"></div>
+              <div class="reveal offer-card__media"><img src="assets/systeme-solaire-combine.jpg" alt="Capteurs solaires thermiques installés sur le toit d’une maison" width="800" height="436" loading="lazy"></div>
               <div class="offer-card__body">
                 <span class="tag tag--sun">Chauffage et eau chaude</span>
                 <h3>Système solaire combiné</h3>
@@ -194,7 +198,7 @@
           </li>
           <li>
             <article class="offer-card">
-              <div class="offer-card__media"><img src="assets/ballon-thermodynamique.jpg" alt="Ballon thermodynamique installé dans un logement" width="800" height="587" loading="lazy"></div>
+              <div class="reveal offer-card__media"><img src="assets/ballon-thermodynamique.jpg" alt="Ballon thermodynamique installé dans un logement" width="800" height="587" loading="lazy"></div>
               <div class="offer-card__body">
                 <span class="tag tag--water">Eau chaude</span>
                 <h3>Ballon thermodynamique</h3>
@@ -208,7 +212,7 @@
           </li>
           <li>
             <article class="offer-card">
-              <div class="offer-card__media offer-card__media--contain"><img src="assets/ballon-electrique.jpg" alt="Ballon électrique vertical installé dans une salle de bain" width="305" height="305" loading="lazy"></div>
+              <div class="reveal offer-card__media offer-card__media--contain"><img src="assets/ballon-electrique.jpg" alt="Ballon électrique vertical installé dans une salle de bain" width="305" height="305" loading="lazy"></div>
               <div class="offer-card__body">
                 <span class="tag tag--water">Eau chaude</span>
                 <h3>Ballon électrique</h3>
@@ -227,7 +231,7 @@
     <!-- ===================== Prestation 1 : PAC air-eau ===================== -->
     <section class="section section--soft service" id="pompe-a-chaleur-air-eau" aria-labelledby="titre-pac">
       <div class="container">
-        <div class="service__media"><img src="assets/pompe-a-chaleur-air-eau.jpg" alt="Pompe à chaleur air-eau installée à l’extérieur d’une maison" width="800" height="581" loading="lazy"></div>
+        <div class="reveal service__media"><img src="assets/pompe-a-chaleur-air-eau.jpg" alt="Pompe à chaleur air-eau installée à l’extérieur d’une maison" width="800" height="581" loading="lazy"></div>
         <div>
           <span class="tag">Chauffage</span>
           <h2 id="titre-pac">Pompe à chaleur air-eau</h2>
@@ -261,7 +265,7 @@
     <!-- ===================== Prestation 2 : Isolation des combles ===================== -->
     <section class="section service service--reverse" id="isolation-des-combles" aria-labelledby="titre-combles">
       <div class="container">
-        <div class="service__media"><img src="assets/isolation-combles.webp" alt="Isolant en vrac soufflé sur le plancher de combles perdus, entre les fermettes de la charpente" width="640" height="480" loading="lazy"></div>
+        <div class="reveal service__media"><img src="assets/isolation-combles.webp" alt="Isolant en vrac soufflé sur le plancher de combles perdus, entre les fermettes de la charpente" width="640" height="480" loading="lazy"></div>
         <div>
           <span class="tag">Isolation</span>
           <h2 id="titre-combles">Isolation des combles</h2>
@@ -295,7 +299,7 @@
     <!-- ===================== Prestation 3 : Système solaire combiné ===================== -->
     <section class="section section--soft service" id="systeme-solaire-combine" aria-labelledby="titre-ssc">
       <div class="container">
-        <div class="service__media"><img src="assets/systeme-solaire-combine.jpg" alt="Capteurs solaires thermiques posés sur une toiture en tuiles" width="800" height="436" loading="lazy"></div>
+        <div class="reveal service__media"><img src="assets/systeme-solaire-combine.jpg" alt="Capteurs solaires thermiques posés sur une toiture en tuiles" width="800" height="436" loading="lazy"></div>
         <div>
           <span class="tag tag--sun">Chauffage et eau chaude</span>
           <h2 id="titre-ssc">Système solaire combiné (SSC)</h2>
@@ -329,7 +333,7 @@
     <!-- ===================== Prestation 4 : Ballon thermodynamique ===================== -->
     <section class="section service service--reverse" id="ballon-thermodynamique" aria-labelledby="titre-thermo">
       <div class="container">
-        <div class="service__media"><img src="assets/ballon-thermodynamique.jpg" alt="Ballon thermodynamique installé dans une pièce d’eau" width="800" height="587" loading="lazy"></div>
+        <div class="reveal service__media"><img src="assets/ballon-thermodynamique.jpg" alt="Ballon thermodynamique installé dans une pièce d’eau" width="800" height="587" loading="lazy"></div>
         <div>
           <span class="tag tag--water">Eau chaude</span>
           <h2 id="titre-thermo">Ballon thermodynamique</h2>
@@ -363,7 +367,7 @@
     <!-- ===================== Prestation 5 : Ballon électrique ===================== -->
     <section class="section section--soft service" id="ballon-electrique" aria-labelledby="titre-electrique">
       <div class="container">
-        <div class="service__media service__media--contain"><img src="assets/ballon-electrique.jpg" alt="Ballon électrique vertical fixé au mur d’une salle de bain" width="305" height="305" loading="lazy"></div>
+        <div class="reveal service__media service__media--contain"><img src="assets/ballon-electrique.jpg" alt="Ballon électrique vertical fixé au mur d’une salle de bain" width="305" height="305" loading="lazy"></div>
         <div>
           <span class="tag tag--water">Eau chaude</span>
           <h2 id="titre-electrique">Ballon électrique</h2>
@@ -498,7 +502,8 @@
             <li><svg aria-hidden="true"><use href="#i-check"/></svg>Aucune aide annoncée avant l’étude de votre situation</li>
           </ul>
           <div class="contact__mail">
-            <p>Vous préférez écrire&nbsp;?<br><a href="mailto:helios-energie@monprojetchauffage.com">helios-energie@<wbr>monprojetchauffage.com</a></p>
+            <p>Vous préférez appeler&nbsp;?<br><a class="contact__phone" href="tel:+33756893391"><svg aria-hidden="true"><use href="#i-phone"/></svg>07&nbsp;56&nbsp;89&nbsp;33&nbsp;91</a></p>
+            <p>Ou nous écrire&nbsp;:<br><a href="mailto:helios-energie@monprojetchauffage.com">helios-energie@<wbr>monprojetchauffage.com</a></p>
           </div>
         </div>
 
@@ -601,7 +606,7 @@
               <dt>Moment souhaité pour le rappel</dt><dd id="recap-moment"></dd>
               <dt>Numéro à rappeler</dt><dd id="recap-telephone"></dd>
             </dl>
-            <p class="hint">Une question en attendant&nbsp;? Écrivez-nous à <a href="mailto:helios-energie@monprojetchauffage.com">helios-energie@monprojetchauffage.com</a>.</p>
+            <p class="hint">Une question en attendant&nbsp;? Appelez-nous au <a href="tel:+33756893391">07&nbsp;56&nbsp;89&nbsp;33&nbsp;91</a> ou écrivez-nous à <a href="mailto:helios-energie@monprojetchauffage.com">helios-energie@monprojetchauffage.com</a>.</p>
           </div>
         </div>
       </div>
@@ -619,6 +624,7 @@
           <p>Votre confort, notre engagement.</p>
           <p>Rénovation énergétique pour les particuliers en France métropolitaine.</p>
           <p>Qualification RGE</p>
+          <p><a href="tel:+33756893391">07&nbsp;56&nbsp;89&nbsp;33&nbsp;91</a></p>
           <p><a href="mailto:helios-energie@monprojetchauffage.com">helios-energie@monprojetchauffage.com</a></p>
         </div>
         <nav aria-labelledby="footer-prestations">
@@ -646,8 +652,9 @@
     </div>
   </footer>
 
-  <aside class="mobile-cta" id="mobile-cta" aria-label="Demande de rappel">
-    <a class="btn btn-primary" href="#demande"><svg aria-hidden="true"><use href="#i-phone"/></svg>Être rappelé gratuitement</a>
+  <aside class="mobile-cta" id="mobile-cta" aria-label="Contact rapide">
+    <a class="btn btn-secondary mobile-cta__call" href="tel:+33756893391"><svg aria-hidden="true"><use href="#i-phone"/></svg>Appeler</a>
+    <a class="btn btn-primary" href="#demande">Être rappelé<span class="mobile-cta__extra">&nbsp;gratuitement</span></a>
   </aside>
 </body>
 </html>
