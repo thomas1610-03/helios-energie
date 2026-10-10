@@ -48,6 +48,8 @@
   var sending = false;
 
   var CONTACT_EMAIL = 'helios-energie@monprojetchauffage.com';
+  var CONTACT_PHONE = '07 56 89 33 91';
+  var CONTACT_TEL = 'tel:+33756893391';
 
   /* Zones climatiques par département (France métropolitaine).
      Information indicative transmise à l'équipe uniquement, jamais affichée comme critère d'éligibilité. */
@@ -263,6 +265,12 @@
   function showAlert(message) {
     alertBox.textContent = '';
     alertBox.appendChild(document.createTextNode(message + ' '));
+    var tel = document.createElement('a');
+    tel.href = CONTACT_TEL;
+    tel.textContent = CONTACT_PHONE.replace(/ /g, '\u00a0');
+    tel.style.color = 'inherit';
+    alertBox.appendChild(tel);
+    alertBox.appendChild(document.createTextNode(' ou écrivez-nous à '));
     var a = document.createElement('a');
     a.href = 'mailto:' + CONTACT_EMAIL;
     a.textContent = CONTACT_EMAIL;
@@ -333,7 +341,7 @@
       success.scrollIntoView({ block: 'center' });
     }).catch(function (err) {
       if (window.console && console.warn) console.warn('Envoi du formulaire impossible :', err && err.message);
-      showAlert('Votre demande n’a pas pu être envoyée. Vérifiez votre connexion puis réessayez. Si le problème persiste, écrivez-nous à');
+      showAlert('Votre demande n’a pas pu être envoyée. Vérifiez votre connexion puis réessayez. Si le problème persiste, appelez-nous au');
     }).then(function () {
       if (timer) clearTimeout(timer);
       setSending(false);
@@ -378,5 +386,32 @@
       });
     }, { threshold: 0.05 });
     io.observe(demande);
+  }
+
+  /* ---------- Photos : apparition douce au défilement ---------- */
+  var reveals = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reveals.length && !calm && 'IntersectionObserver' in window) {
+    document.documentElement.classList.add('js-reveal');
+    var showPhoto = function (el) { el.classList.add('is-visible'); };
+    var ro = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        ro.unobserve(el);
+        var img = el.querySelector('img');
+        if (!img || img.complete) { showPhoto(el); return; }
+        img.addEventListener('load', function () { showPhoto(el); }, { once: true });
+        img.addEventListener('error', function () { showPhoto(el); }, { once: true });
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.15 });
+    reveals.forEach(function (el) {
+      var li = el.closest('.offer-grid > li');
+      if (li) {
+        var idx = Array.prototype.indexOf.call(li.parentNode.children, li);
+        el.style.setProperty('--reveal-delay', ((idx % 3) * 0.12).toFixed(2) + 's');
+      }
+      ro.observe(el);
+    });
   }
 })();
