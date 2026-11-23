@@ -889,3 +889,7 @@ a:hover { color: var(--green-900); }
 @media print {
   .js-reveal .reveal { opacity: 1 !important; animation: none !important; }
 }
+
+/* Avis clients : bouton vers Trustpilot (aucun avis n’est recopié sur le site) */
+.section-head.review-cta { margin-bottom: 0; }
+.section-head .review-cta__action { margin-top: 1.25rem; }
